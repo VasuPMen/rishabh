@@ -1,0 +1,165 @@
+.card {
+  background: var(--sap-card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+  max-width: 560px;
+  width: 100%;
+  margin: 40px auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sap-text);
+  margin-bottom: 2px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--sap-text-secondary);
+}
+
+.toggle {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--sap-border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.toggleBtn {
+  flex: 1;
+  padding: 8px 12px;
+  background: #fff;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--sap-text-secondary);
+  transition: background 0.15s, color 0.15s;
+}
+
+.toggleBtn.active {
+  background: var(--sap-brand);
+  color: #fff;
+  font-weight: 600;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sap-text);
+  margin-bottom: 6px;
+}
+
+.select,
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--sap-border);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--sap-text);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.select:focus,
+.input:focus {
+  border-color: var(--sap-brand);
+  box-shadow: 0 0 0 2px rgba(0,112,242,0.12);
+}
+
+.startBtn {
+  width: 100%;
+  padding: 12px;
+  background: var(--sap-brand);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  margin-bottom: 24px;
+}
+
+.startBtn:hover:not(:disabled) {
+  background: var(--sap-brand-dark);
+}
+
+.startBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--sap-text-secondary);
+  margin-bottom: 10px;
+}
+
+.error {
+  font-size: 13px;
+  color: var(--sap-error);
+  margin-top: 6px;
+}
+
+.customerGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.customerChip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--sap-border);
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--sap-text);
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.customerChip:hover {
+  border-color: var(--sap-brand);
+  background: #f0f7ff;
+}
+
+.customerChip.selectedChip {
+  border-color: var(--sap-brand);
+  background: #e8f1fc;
+}
+
+.chipId {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--sap-brand);
+  color: #fff;
+  border-radius: 4px;
+  padding: 1px 6px;
+  flex-shrink: 0;
+}

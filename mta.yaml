@@ -1,0 +1,59 @@
+_schema-version: "3.1"
+ID: customer-billing-review-agent
+version: 1.0.0
+description: "Customer Billing Review Agent — read-only AI agent for billing specialists"
+
+parameters:
+  enable-parallel-deployments: true
+
+modules:
+
+  # ── Python AI Agent ──────────────────────────────────────────────────────
+  - name: billing-review-agent
+    type: python
+    path: agent
+    parameters:
+      buildpack: python_buildpack
+      memory: 512M
+      disk-quota: 1G
+    build-parameters:
+      builder: custom
+      commands:
+        - pip install -r requirements.txt
+      build-result: .
+    properties:
+      OPENAI_MODEL: gpt-4o
+    requires:
+      - name: billing-review-aicore
+        parameters:
+          content-target: true
+    provides:
+      - name: billing-agent-api
+        properties:
+          agent-url: ${default-url}
+
+  # ── CAP Backend + UI ─────────────────────────────────────────────────────
+  - name: billing-review-backend
+    type: nodejs
+    path: backend
+    parameters:
+      memory: 256M
+      disk-quota: 512M
+    build-parameters:
+      builder: npm
+      build-commands:
+        - npm install --production
+    properties:
+      AGENT_BASE_URL: ~{billing-agent-api/agent-url}
+    requires:
+      - name: billing-agent-api
+    provides:
+      - name: billing-review-backend-url
+        properties:
+          backend-url: ${default-url}
+
+resources:
+  - name: billing-review-aicore
+    type: org.cloudfoundry.user-provided-service
+    parameters:
+      service-name: billing-review-aicore

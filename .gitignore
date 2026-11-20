@@ -1,0 +1,27 @@
+# Environment variables
+.env
+agent/.env
+backend/.env
+
+# Dependencies
+node_modules/
+ui/node_modules/
+backend/node_modules/
+__pycache__/
+agent/__pycache__/
+api/__pycache__/
+
+# Build outputs
+ui/dist/
+backend/app/
+.build/
+*.mtar
+
+# Vercel
+.vercel/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

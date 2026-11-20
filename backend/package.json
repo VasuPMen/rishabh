@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "dependencies": {
+    "@sap/cds": "^8.9.10",
+    "@sap/cds-dk": "^9",
+    "express": "^4",
+    "node-fetch": "^3.3.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "dev": "cds watch"
+  },
+  "cds": {
+    "requires": {
+      "auth": "dummy"
+    },
+    "build": {
+      "target": "."
+    }
+  },
+  "private": true
+}
