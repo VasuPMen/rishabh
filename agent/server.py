@@ -45,17 +45,22 @@ class ChatResponse(BaseModel):
 
 
 @app.get("/health")
+@app.get("/api/health")
 def health():
     return {"status": "ok", "service": "Customer Billing Review Agent"}
 
 
 @app.get("/customers")
+@app.get("/api/customers")
+@app.get("/customers()")
+@app.get("/api/customers()")
 def list_customers():
     """Return the list of available mock customers."""
     return [{"id": k, "name": v["name"]} for k, v in CUSTOMERS.items()]
 
 
 @app.post("/chat", response_model=ChatResponse)
+@app.post("/api/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
     """
     Send a message to the agent and receive a response.

@@ -1,15 +1,27 @@
 {
-  "version": 2,
-  "buildCommand": "cd ui && npm install && npm run build",
-  "outputDirectory": "ui/dist",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "agent": {
+      "root": "agent",
+      "framework": "fastapi"
+    },
+    "ui": {
+      "root": "ui",
+      "framework": "vite"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/index.py"
+      "destination": {
+        "service": "agent"
+      }
     },
     {
       "source": "/(.*)",
-      "destination": "/ui/dist/$1"
+      "destination": {
+        "service": "ui"
+      }
     }
   ]
 }
